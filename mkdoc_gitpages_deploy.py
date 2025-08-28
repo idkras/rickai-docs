@@ -62,11 +62,9 @@ def copy_symlinks_to_real_files():
                     copied_files.append(str(file_path))
                     print(f"✅ Скопирован: {file_path.name}")
                 else:
-                    print(f"⚠️  Целевой файл не найден: {target_path}")
-                    # Создаем файл с базовым содержимым
-                    create_fallback_file(file_path)
-                    copied_files.append(str(file_path))
-                    print(f"✅ Создан fallback файл: {file_path.name}")
+                    print(f"❌ Целевой файл не найден: {target_path}")
+                    print(f"❌ Символическая ссылка {file_path} указывает на несуществующий файл")
+                    return False
                     
             except Exception as e:
                 print(f"❌ Ошибка при копировании {file_path}: {e}")
@@ -129,25 +127,7 @@ def restore_symlinks():
         print(f"📋 Восстановлено ссылок: {restored_count}")
 
 
-def create_fallback_file(file_path):
-    """Создает файл с базовым содержимым если целевой файл недоступен"""
-    fallback_content = f"""# {file_path.stem.replace('-', ' ').title()}
 
-## Обзор
-
-Документация по {file_path.stem.replace('-', ' ').lower()}.
-
-## Примечание
-
-Этот файл был создан автоматически при деплое, так как исходный файл недоступен.
-
----
-
-*Документация обновлена: {datetime.now().strftime('%d %B %Y')}*
-"""
-    
-    with open(file_path, 'w', encoding='utf-8') as f:
-        f.write(fallback_content)
 
 
 def main():

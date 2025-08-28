@@ -1,38 +1,55 @@
 /* Custom styles for Rick.ai Documentation */
 
-/* White background */
-body {
+/* White background - более специфичный селектор */
+html body {
   background-color: white !important;
 }
 
-/* Hide header/nav bar */
-.md-header {
+/* Hide header/nav bar - более специфичный селектор */
+.md-header,
+header.md-header {
   display: none !important;
+  visibility: hidden !important;
 }
 
-/* Hide left navigation sidebar */
-.md-sidebar--primary {
+/* Hide left navigation sidebar - более специфичный селектор */
+.md-sidebar--primary,
+aside.md-sidebar--primary {
   display: none !important;
+  visibility: hidden !important;
 }
 
-/* Show right TOC sidebar */
-.md-sidebar--secondary {
+/* Show right TOC sidebar - более специфичный селектор */
+.md-sidebar--secondary,
+aside.md-sidebar--secondary {
   display: block !important;
   width: 20rem !important;
+  visibility: visible !important;
 }
 
-/* Adjust main content area */
-.md-main__inner {
+/* Adjust main content area - более специфичный селектор */
+.md-main__inner,
+main .md-main__inner {
   display: flex !important;
 }
 
-.md-content {
+.md-content,
+main .md-content {
   flex: 1 !important;
   max-width: calc(100% - 20rem) !important;
   padding: 2rem 4rem !important;
+  background-color: white !important;
 }
 
-/* Hide footer */
-.md-footer {
+/* Hide footer - более специфичный селектор */
+.md-footer,
+footer.md-footer {
   display: none !important;
+  visibility: hidden !important;
+}
+
+/* Дополнительные стили для гарантии белого фона */
+.md-main,
+.md-container {
+  background-color: white !important;
 }

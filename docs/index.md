@@ -1,17 +1,45 @@
-# Welcome to MkDocs
+# Rick.ai Documentation
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Добро пожаловать в документацию Rick.ai - AI-ассистированные проекты и интеграции.
 
-## Commands
+## О проекте
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+Rick.ai - это платформа для AI-ассистированных проектов, включающая:
 
-## Project layout
+- **Анализ лендингов** с помощью HeroesGPT
+- **Интеграции с внешними сервисами** (Яндекс.Директ, Google Sheets)
+- **Автоматизация процессов** через MCP серверы
+- **Управление стандартами** и документацией
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+## Быстрый старт
+
+1. **Установка зависимостей:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Локальная разработка:**
+   ```bash
+   mkdocs serve
+   ```
+
+3. **Деплой:**
+   ```bash
+   python mkdoc_gitpages_deploy.py
+   ```
+
+## Структура документации
+
+- **Главная** - обзор проекта и быстрый старт
+- **Техническая документация** - детальные инструкции по интеграциям
+- **Стандарты** - правила и процессы разработки
+
+## Полезные ссылки
+
+- [GitHub репозиторий](https://github.com/idkras/rickai-docs)
+- [Документация на GitHub Pages](https://idkras.github.io/rickai-docs/)
+- [Rick.ai основной сайт](https://rick.ai)
+
+---
+
+*Документация обновляется автоматически при каждом деплое*

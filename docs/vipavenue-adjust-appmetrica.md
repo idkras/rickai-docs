@@ -1,1 +1,13 @@
-../../[rick.ai]/knowledge base/in progress/1. when new lead come/when mobile · appmetric · ajust/vipavenue.ru/vipavenue.adjust_appmetrica.md
+# Vipavenue Adjust Appmetrica
+
+## Обзор
+
+Документация по vipavenue adjust appmetrica.
+
+## Примечание
+
+Этот файл был создан автоматически при деплое, так как исходный файл недоступен.
+
+---
+
+*Документация обновлена: 28 August 2025*

@@ -32,13 +32,18 @@ def copy_symlinks_to_real_files():
         return False
     
     copied_files = []
+    symlink_info = []  # Сохраняем информацию о символических ссылках
     
     # Ищем все символические ссылки в папке docs
     for file_path in docs_dir.rglob("*"):
         if file_path.is_symlink():
             try:
-                # Получаем путь, на который указывает символическая ссылка
+                # Сохраняем информацию о символической ссылке
                 target_path = file_path.resolve()
+                symlink_info.append({
+                    'file_path': file_path,
+                    'target_path': target_path
+                })
                 
                 # Проверяем, что целевой файл существует
                 if target_path.exists():
@@ -67,12 +72,61 @@ def copy_symlinks_to_real_files():
                 print(f"❌ Ошибка при копировании {file_path}: {e}")
                 return False
     
+    # Сохраняем информацию о символических ссылках для восстановления
+    if symlink_info:
+        save_symlink_info(symlink_info)
+    
     if copied_files:
         print(f"📋 Обработано файлов: {len(copied_files)}")
     else:
         print("ℹ️  Символические ссылки не найдены")
     
     return True
+
+
+def save_symlink_info(symlink_info):
+    """Сохраняет информацию о символических ссылках"""
+    info_file = Path(".symlink_info")
+    with open(info_file, 'w') as f:
+        for info in symlink_info:
+            f.write(f"{info['file_path']}|{info['target_path']}\n")
+
+
+def restore_symlinks():
+    """Восстанавливает символические ссылки после деплоя"""
+    print("🔗 Восстанавливаем символические ссылки...")
+    
+    info_file = Path(".symlink_info")
+    if not info_file.exists():
+        print("ℹ️  Информация о символических ссылках не найдена")
+        return
+    
+    restored_count = 0
+    
+    with open(info_file, 'r') as f:
+        for line in f:
+            try:
+                file_path_str, target_path_str = line.strip().split('|')
+                file_path = Path(file_path_str)
+                target_path = Path(target_path_str)
+                
+                # Удаляем текущий файл
+                if file_path.exists():
+                    file_path.unlink()
+                
+                # Создаем символическую ссылку
+                file_path.symlink_to(target_path)
+                restored_count += 1
+                print(f"✅ Восстановлена ссылка: {file_path.name}")
+                
+            except Exception as e:
+                print(f"❌ Ошибка при восстановлении {file_path_str}: {e}")
+    
+    # Удаляем временный файл
+    info_file.unlink()
+    
+    if restored_count > 0:
+        print(f"📋 Восстановлено ссылок: {restored_count}")
 
 
 def create_fallback_file(file_path):
@@ -123,6 +177,9 @@ def main():
     print("🌐 Деплоим на GitHub Pages...")
     if not run_command("mkdocs gh-deploy --force"):
         sys.exit(1)
+    
+    # Восстанавливаем символические ссылки
+    restore_symlinks()
     
     print("✅ Деплой завершен!")
     print("📖 https://idkras.github.io/rickai-docs/")

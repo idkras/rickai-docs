@@ -5,40 +5,63 @@ html body {
   background-color: white !important;
 }
 
-/* Hide header/nav bar - более специфичный селектор */
+/* ПОЛНОСТЬЮ СКРЫВАЕМ синюю шапку */
 .md-header,
-header.md-header {
+header.md-header,
+.md-header__inner,
+.md-header__button,
+.md-header__title,
+.md-header__source,
+.md-header__topic,
+.md-header__logo {
   display: none !important;
   visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
 }
 
-/* Hide left navigation sidebar - более специфичный селектор */
+/* ПОЛНОСТЬЮ УБИРАЕМ левую колонку из layout */
 .md-sidebar--primary,
 aside.md-sidebar--primary {
   display: none !important;
   visibility: hidden !important;
+  width: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
 }
 
-/* Show right TOC sidebar - более специфичный селектор */
+/* Show right TOC sidebar - фиксированная ширина с отступом сверху */
 .md-sidebar--secondary,
 aside.md-sidebar--secondary {
   display: block !important;
-  width: 20rem !important;
+  width: 25rem !important;
   visibility: visible !important;
+  position: fixed !important;
+  right: 0 !important;
+  top: 0 !important;
+  height: 100vh !important;
+  overflow-y: auto !important;
+  padding-top: 2rem !important; /* Отступ сверху */
+  margin-top: 0 !important;
 }
 
-/* Adjust main content area - более специфичный селектор */
+/* Оптимизированная структура контента */
 .md-main__inner,
 main .md-main__inner {
-  display: flex !important;
+  display: block !important; /* Убираем flex, используем block */
+  margin-left: 120px !important; /* Отступ слева 120px */
+  margin-right: 25rem !important; /* Отступ справа под правую колонку */
+  padding: 0 !important;
+  margin-top: 0 !important; /* Убираем отступ сверху */
 }
 
 .md-content,
 main .md-content {
-  flex: 1 !important;
-  max-width: calc(100% - 20rem) !important;
-  padding: 2rem 4rem !important;
+  width: auto !important; /* Автоматическая ширина */
+  max-width: none !important; /* Убираем ограничения */
+  padding: 2rem !important; /* Внутренние отступы */
   background-color: white !important;
+  margin: 0 !important;
 }
 
 /* Hide footer - более специфичный селектор */
@@ -52,4 +75,41 @@ footer.md-footer {
 .md-main,
 .md-container {
   background-color: white !important;
+}
+
+/* Дополнительные стили для скрытия навигации */
+.md-nav__title,
+.md-nav__button {
+  display: none !important;
+}
+
+/* Адаптивность для разных размеров экрана */
+@media (max-width: 1200px) {
+  .md-sidebar--secondary,
+  aside.md-sidebar--secondary {
+    width: 20rem !important;
+  }
+  
+  .md-main__inner,
+  main .md-main__inner {
+    margin-right: 20rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .md-sidebar--secondary,
+  aside.md-sidebar--secondary {
+    width: 18rem !important;
+  }
+  
+  .md-main__inner,
+  main .md-main__inner {
+    margin-left: 20px !important; /* Минимальный отступ на маленьких экранах */
+    margin-right: 18rem !important;
+  }
+  
+  .md-content,
+  main .md-content {
+    padding: 1rem !important;
+  }
 }

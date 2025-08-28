@@ -1,0 +1,38 @@
+/* Custom styles for Rick.ai Documentation */
+
+/* White background */
+body {
+  background-color: white !important;
+}
+
+/* Hide header/nav bar */
+.md-header {
+  display: none !important;
+}
+
+/* Hide left navigation sidebar */
+.md-sidebar--primary {
+  display: none !important;
+}
+
+/* Show right TOC sidebar */
+.md-sidebar--secondary {
+  display: block !important;
+  width: 20rem !important;
+}
+
+/* Adjust main content area */
+.md-main__inner {
+  display: flex !important;
+}
+
+.md-content {
+  flex: 1 !important;
+  max-width: calc(100% - 20rem) !important;
+  padding: 2rem 4rem !important;
+}
+
+/* Hide footer */
+.md-footer {
+  display: none !important;
+}

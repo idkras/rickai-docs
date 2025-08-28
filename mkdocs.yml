@@ -76,8 +76,8 @@ markdown_extensions:
   - pymdownx.tilde
 
 extra_css:
-  - stylesheets/extra.css?v=3
+  - stylesheets/extra.css?v=6
 
 nav:
   - Home: index.md
-  - VipAvenue Adjust AppMetrica: vipavenue.adjust_appmetrica.md
+  - VipAvenue Adjust AppMetrica: vipavenue-adjust-appmetrica.md

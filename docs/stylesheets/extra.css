@@ -42,18 +42,18 @@ aside.md-sidebar--primary {
   left: -9999px !important;
 }
 
-/* Show right TOC sidebar - фиксированная ширина БЕЗ отступа сверху */
+/* Show right TOC sidebar - фиксированная ширина с правильным отступом сверху */
 .md-sidebar--secondary,
 aside.md-sidebar--secondary {
   display: block !important;
-  width: 25rem !important;
+  width: 50rem !important; /* Увеличили с 25rem до 50rem */
   visibility: visible !important;
   position: fixed !important;
   right: 0 !important;
-  top: 0 !important; /* Начинаем с самого верха */
-  height: 100vh !important;
+  top: 2rem !important; /* Добавляем отступ сверху */
+  height: calc(100vh - 2rem) !important; /* Учитываем отступ в высоте */
   overflow-y: auto !important;
-  padding-top: 0 !important; /* Убираем отступ сверху */
+  padding-top: 0 !important;
   margin-top: 0 !important;
 }
 
@@ -95,7 +95,7 @@ footer.md-footer {
   display: none !important;
 }
 
-/* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ ГАРАНТИИ СКРЫТИЯ HEADER */
+/* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ ГАРАНТИИ СКРЫТИЯ HEADER И TABS */
 body > header,
 body header,
 .md-header,
@@ -108,7 +108,16 @@ header *,
 [class*="md-header"],
 header[class*="md-header"],
 [class*="md-header"] *,
-header[class*="md-header"] * {
+header[class*="md-header"] *,
+.md-tabs,
+nav.md-tabs,
+[class*="md-tabs"],
+.md-tabs *,
+nav.md-tabs *,
+nav[class*="md-tabs"],
+nav[class*="md-tabs"] *,
+[data-md-component="tabs"],
+[data-md-component="tabs"] * {
   display: none !important;
   visibility: hidden !important;
   height: 0 !important;

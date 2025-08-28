@@ -61,7 +61,7 @@ https://idkras.github.io/rickai-docs/
 
 ```bash
 # Быстрый деплой (рекомендуется)
-python quick_deploy.py
+python mkdoc_gitpages_deploy.py
 
 # Или через Makefile
 make quick-deploy

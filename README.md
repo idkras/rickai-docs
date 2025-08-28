@@ -46,7 +46,7 @@ mkdocs serve
 
 **Быстрый деплой (рекомендуется):**
 ```bash
-python quick_deploy.py
+python mkdoc_gitpages_deploy.py
 ```
 
 **Полный деплой (с установкой зависимостей):**

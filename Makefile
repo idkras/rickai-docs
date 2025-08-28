@@ -31,7 +31,7 @@ deploy: ## Полный деплой (с установкой зависимос
 
 quick-deploy: ## Быстрый деплой (без установки зависимостей)
 	@echo "$(BLUE)Запускаем быстрый деплой...$(NC)"
-	python quick_deploy.py
+	python mkdoc_gitpages_deploy.py
 
 clean: ## Очистить собранную документацию
 	@echo "$(YELLOW)Очищаем собранную документацию...$(NC)"

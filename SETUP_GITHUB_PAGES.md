@@ -32,7 +32,7 @@
 
 После настройки используйте:
 ```bash
-python quick_deploy.py
+python mkdoc_gitpages_deploy.py
 ```
 
 Эта команда автоматически:

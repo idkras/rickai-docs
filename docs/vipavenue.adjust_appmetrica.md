@@ -1,0 +1,1 @@
+../../[rick.ai]/knowledge base/in progress/1. when new lead come/when mobile · appmetric · ajust/vipavenue.ru/vipavenue.adjust_appmetrica.md

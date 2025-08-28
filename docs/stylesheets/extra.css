@@ -46,7 +46,7 @@ aside.md-sidebar--primary {
 .md-sidebar--secondary,
 aside.md-sidebar--secondary {
   display: block !important;
-  width: 50rem !important; /* Увеличили с 25rem до 50rem */
+  width: 20rem !important; /* Исправлено: разумная ширина ~320px */
   visibility: visible !important;
   position: fixed !important;
   right: 0 !important;
@@ -57,12 +57,19 @@ aside.md-sidebar--secondary {
   margin-top: 0 !important;
 }
 
+/* Контролировать внутренний контейнер sidebar */
+.md-sidebar__scrollwrap {
+  width: 100% !important;
+  max-width: 20rem !important;
+  overflow-x: hidden !important;
+}
+
 /* Оптимизированная структура контента */
 .md-main__inner,
 main .md-main__inner {
   display: block !important; /* Убираем flex, используем block */
   margin-left: 120px !important; /* Отступ слева 120px */
-  margin-right: 25rem !important; /* Отступ справа под правую колонку */
+  margin-right: 20rem !important; /* Отступ справа под правую колонку */
   padding: 0 !important;
   margin-top: 0 !important; /* Убираем отступ сверху */
 }
@@ -93,6 +100,11 @@ footer.md-footer {
 .md-nav__title,
 .md-nav__button {
   display: none !important;
+}
+
+/* Изменить цвет чекбоксов на #7FDB7C */
+.md-typeset [type=checkbox]:checked + .task-list-indicator:before {
+  background-color: #7FDB7C !important;
 }
 
 /* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ ГАРАНТИИ СКРЫТИЯ HEADER И TABS */
@@ -137,12 +149,12 @@ nav[class*="md-tabs"] *,
 @media (max-width: 1200px) {
   .md-sidebar--secondary,
   aside.md-sidebar--secondary {
-    width: 20rem !important;
+    width: 18rem !important;
   }
   
   .md-main__inner,
   main .md-main__inner {
-    margin-right: 20rem !important;
+    margin-right: 18rem !important;
   }
 }
 

@@ -1,6 +1,6 @@
 # Makefile для Rick.ai Documentation
 
-.PHONY: help install build serve deploy quick-deploy clean test
+.PHONY: help install build serve deploy quick-deploy clean test status push setup check-pages
 
 # Цвета для вывода
 GREEN = \033[0;32m
@@ -54,3 +54,7 @@ push: ## Отправить изменения в репозиторий
 setup: install build ## Первоначальная настройка
 	@echo "$(GREEN)Настройка завершена!$(NC)"
 	@echo "$(BLUE)Запустите 'make serve' для просмотра документации$(NC)"
+
+check-pages: ## Проверить статус GitHub Pages
+	@echo "$(BLUE)Проверяем статус GitHub Pages...$(NC)"
+	python check_pages.py

@@ -57,4 +57,4 @@ setup: install build ## Первоначальная настройка
 
 check-pages: ## Проверить статус GitHub Pages
 	@echo "$(BLUE)Проверяем статус GitHub Pages...$(NC)"
-	python check_pages.py
+	python3 check_pages.py

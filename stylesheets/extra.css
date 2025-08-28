@@ -5,7 +5,7 @@ html body {
   background-color: white !important;
 }
 
-/* ПОЛНОСТЬЮ СКРЫВАЕМ синюю шапку */
+/* ПОЛНОСТЬЮ СКРЫВАЕМ синюю шапку - УСИЛЕННЫЕ СЕЛЕКТОРЫ */
 .md-header,
 header.md-header,
 .md-header__inner,
@@ -13,11 +13,19 @@ header.md-header,
 .md-header__title,
 .md-header__source,
 .md-header__topic,
-.md-header__logo {
+.md-header__logo,
+[class*="md-header"],
+header[class*="md-header"],
+.md-header *,
+header.md-header * {
   display: none !important;
   visibility: hidden !important;
   height: 0 !important;
   overflow: hidden !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
 }
 
 /* ПОЛНОСТЬЮ УБИРАЕМ левую колонку из layout */
@@ -30,7 +38,7 @@ aside.md-sidebar--primary {
   left: -9999px !important;
 }
 
-/* Show right TOC sidebar - фиксированная ширина с отступом сверху */
+/* Show right TOC sidebar - фиксированная ширина БЕЗ отступа сверху */
 .md-sidebar--secondary,
 aside.md-sidebar--secondary {
   display: block !important;
@@ -38,10 +46,10 @@ aside.md-sidebar--secondary {
   visibility: visible !important;
   position: fixed !important;
   right: 0 !important;
-  top: 0 !important;
+  top: 0 !important; /* Начинаем с самого верха */
   height: 100vh !important;
   overflow-y: auto !important;
-  padding-top: 2rem !important; /* Отступ сверху */
+  padding-top: 0 !important; /* Убираем отступ сверху */
   margin-top: 0 !important;
 }
 
@@ -81,6 +89,23 @@ footer.md-footer {
 .md-nav__title,
 .md-nav__button {
   display: none !important;
+}
+
+/* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ ГАРАНТИИ СКРЫТИЯ HEADER */
+body > header,
+body header,
+.md-header,
+header.md-header,
+[data-md-component="header"] {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  z-index: -9999 !important;
 }
 
 /* Адаптивность для разных размеров экрана */
